@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>Contact form to Email</title>
+    <link rel="stylesheet" href="style/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital@1&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <center>
+      <div class="form">
+        <form action="#" method="post">
+          <h1>Contact me</h1>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Name"
+            autocomplete="off"
+            required
+          />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Email"
+            autocomplete="off"
+            required
+          />
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            placeholder="Subject"
+            autocomplete="off"
+            required
+          />
+          <textarea
+            name="massage"
+            id="massage"
+            placeholder="Massage"
+            cols="30"
+            rows="10"
+            required
+          ></textarea>
+          <button id="btn" class="btn">Submit</button>
+        </form>
+      </div>
+    </center>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+      var btn = document.getElementById("btn");
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var subject = document.getElementById("subject").value;
+        var massage = document.getElementById("massage").value;
+        var body =
+          "Name: " +
+          name +
+          "<br/> Email: " +
+          email +
+          "<br/> Subject: " +
+          subject +
+          "<br/> Massage: " +
+          massage;
+        Email.send({
+          Host: "smtp.gmail.com",
+          Username: "webdeveloper.labib@gmail.com",
+          Password: "zvldufmuooujgiwq",
+          To: "webdeveloper.labib@gmail.com",
+          From: email,
+          Subject: subject,
+          Body: body,
+        }).then((message) => alert("Thanks for contact us..."));
+      });
+    </script>
+  </body>
+</html>
